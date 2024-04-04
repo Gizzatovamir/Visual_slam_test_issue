@@ -1,6 +1,0 @@
-[submodule "openvslam-1"]
-	path = openvslam-1
-	url = git@github.com:Gizzatovamir/openvslam-1.git
-[submodule "stella_vslam"]
-	path = stella_vslam
-	url = ./stella_vslam/
