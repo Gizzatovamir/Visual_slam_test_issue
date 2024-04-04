@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+    openvslam:
+      build:
+        context: ./openvslam-1
+        dockerfile: Dockerfile.desktop
+      container_name: "stella_vslam_desktop"
+      volumes:
+      - /tmp/.X11-unix/:/tmp/.X11-unix:ro
+      - ./data/dataset:/dataset:ro
+      - ./data/vocab:/vocab:ro
+      environment:
+        - DISPLAY=$DISPLAY
+      network_mode: host
+      entrypoint: ./run_video_slam -v /vocab/orb_vocab.fbow -m /dataset/1.mp4 -c ../../stella_vslam/example/aist/equirectangular.yaml
