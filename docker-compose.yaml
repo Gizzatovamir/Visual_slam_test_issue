@@ -9,7 +9,30 @@ services:
       - /tmp/.X11-unix/:/tmp/.X11-unix:ro
       - ./data/dataset:/dataset:ro
       - ./data/vocab:/vocab:ro
+      - ./data/configs:/configs:ro
+      - ./data/result:/result
+      environment:
+        - DISPLAY=${DISPLAY}
+#        - XAUTHORITY=$XAUTHORITY
+      tty: true
+      stdin_open: true
+      network_mode: host
+      entrypoint: ./run_video_slam -v /vocab/orb_vocab.fbow -m /dataset/20240327_161347_448.mp4 -c /configs/equirect.yaml
+
+    kimera:
+      build:
+        context: ./Kimera-VIO
+        dockerfile: Dockerfile_20_04
+      container_name: "kimera"
+      volumes:
+        - /tmp/.X11-unix/:/tmp/.X11-unix:ro
+        - ./data/dataset:/dataset:ro
+        - ./data/vocab:/vocab:ro
+        - ./data/configs:/configs:ro
+        - ./data/result:/result
       environment:
         - DISPLAY=$DISPLAY
       network_mode: host
-      entrypoint: ./run_video_slam -v /vocab/orb_vocab.fbow -m /dataset/1.mp4 -c ../../stella_vslam/example/aist/equirectangular.yaml
+      tty: true
+      stdin_open: true
+      entrypoint: /bin/bash

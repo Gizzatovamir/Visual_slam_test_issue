@@ -7,4 +7,6 @@ else
   git clone --recursive https://github.com/Gizzatovamir/openvslam-1.git
 fi
 xhost +local:
+# for debug purposes
 docker-compose up --build openvslam
+#docker-compose up openvslam
