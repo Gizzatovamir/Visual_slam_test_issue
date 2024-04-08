@@ -24,6 +24,12 @@ This is repository for visual slam test issue
 Построил траектории, но они получились странные, заетил, что траектории и лэндмарки маппинга странные, пока не разобрался можно ли менять массштаб при маппинге и локализации
 
 Перед запуском скриптов надо собрать конейтнер openvslam-1
-```commandline
-docker build -t stella_vslam-desktop -f Dockerfile.desktop .
+
+Для запуска сначала нужно вызвать
 ```
+bash pre_run.sh
+```
+
+Далее поместить видео датасет в папку dataset и запустить:
+- для маппинга ```bash openvslam_mapping.sh```
+- для локализации ```bash openvslam_localization.sh```
