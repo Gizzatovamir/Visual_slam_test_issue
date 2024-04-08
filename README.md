@@ -32,4 +32,4 @@ bash pre_run.sh
 
 Далее поместить видео датасет в папку dataset и запустить:
 - для маппинга ```bash openvslam_mapping.sh```
-- для локализации ```openvslam_localization.sh```
+- для локализации ```bash openvslam_localization.sh```
